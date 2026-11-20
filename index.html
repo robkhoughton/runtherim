@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -136,39 +136,74 @@
       </div>
     </section>
 
-    <section class="band sponsor-strip" aria-labelledby="sponsor-strip-title">
+    <section class="sponsor-strip" aria-labelledby="sponsor-strip-title">
       <div class="wrap">
         <h2 id="sponsor-strip-title">Thank you to our 2026 sponsors</h2>
-        <ul class="sponsor-grid">
-          <li><a href="https://www.dignityhealth.org/central-california/locations/marktwainmedical/services/medical-clinics" rel="noopener"><img src="img/sponsors/dignity-health.png" alt="Dignity Health Mark Twain Medical Center" loading="lazy"></a></li>
-          <li><a href="https://peakperformancecare.com" rel="noopener"><img src="img/sponsors/peak-performance-600.png" alt="Peak Performance" loading="lazy"></a></li>
-          <li><a href="https://www.hammernutrition.com" rel="noopener"><img src="img/sponsors/hammer-nutrition.png" alt="Hammer Nutrition" loading="lazy"></a></li>
-          <li><a href="https://www.adventisthealth.org/sonora/" rel="noopener"><img src="img/sponsors/adventist-health-sonora.png" alt="Adventist Health Sonora" loading="lazy"></a></li>
-          <li><a href="https://www.snacattack.com" rel="noopener"><img src="img/sponsors/snac-2026.png" alt="Sierra Nevada Adventure Co." loading="lazy"></a></li>
-          <li><a href="https://www.ridemountainaloha.com/" rel="noopener"><img src="img/sponsors/mountain-aloha.png" alt="Mountain Aloha MTB Co." loading="lazy"></a></li>
-          <li><a href="https://www.bvadventures.com" rel="noopener"><img src="img/sponsors/bearvalley-stackedlogo-black-pms.png" alt="Bear Valley Adventure Co." loading="lazy"></a></li>
-          <li><a href="https://www.kevinscrane.com/" rel="noopener"><img src="img/sponsors/kevins-crane.png" alt="Kevin&#x27;s Crane Co." loading="lazy"></a></li>
-          <li><a href="https://www.goldelectricinc.com" rel="noopener"><img src="img/sponsors/gold.png" alt="Gold Electric" loading="lazy"></a></li>
-          <li><a href="https://www.poppiesnpines.com/" rel="noopener"><img src="img/sponsors/poppies-pines.png" alt="Poppies n&#x27; Pines" loading="lazy"></a></li>
-          <li><a href="https://cal-waste.com" rel="noopener"><img src="img/sponsors/cal-waste.png" alt="Cal-Waste" loading="lazy"></a></li>
-          <li><a href="https://boutique.allegorie.wine/" rel="noopener"><img src="img/sponsors/allegorie.png" alt="Allégorie" loading="lazy"></a></li>
-          <li><a href="https://www.yelp.com/biz/heart-and-soul-country-kitchen-arnold" rel="noopener"><img src="img/sponsors/heart-and-soul-kitchen.png" alt="Heart and Soul Country Kitchen" loading="lazy"></a></li>
-          <li><a href="https://hibernation.com/hibernation/" rel="noopener"><img src="img/sponsors/hibernation-stove-spa.png" alt="Hibernation Stove &amp; Spa" loading="lazy"></a></li>
-          <li><a href="https://www.arnoldlodgeca.com/" rel="noopener"><img src="img/sponsors/meadowmontlogowithdog.png" alt="Meadowmont Lodge" loading="lazy"></a></li>
-          <li><a href="https://www.arnoldtimberlinelodge.com" rel="noopener"><img src="img/sponsors/timerberline-lodge-2.png" alt="Timberline Lodge" loading="lazy"></a></li>
-          <li><a href="https://arnoldcaliforniahomes.com/" rel="noopener"><img src="img/sponsors/corcoran.png" alt="Corcoran Icon Properties" loading="lazy"></a></li>
-          <li><a href="https://crowleydds.com/" rel="noopener"><img src="img/sponsors/crowley-dentistry.png" alt="Crowley Dentistry" loading="lazy"></a></li>
-          <li><a href="https://www.jilliandayspa.com/" rel="noopener"><img src="img/sponsors/jillian-spa.png" alt="Jillian Day Spa &amp; Salon" loading="lazy"></a></li>
-          <li><a href="https://www.thesmogking.com/" rel="noopener"><img src="img/sponsors/smog-king.png" alt="The Smog King" loading="lazy"></a></li>
-          <li><a href="https://makepartake.com" rel="noopener"><img src="img/sponsors/makeandpartake-web.png" alt="Make &amp; parTake" loading="lazy"></a></li>
-          <li><a href="https://www.fawnandfernboutique.com/" rel="noopener"><img src="img/sponsors/fawn-and-fern-1.png" alt="Fawn &amp; Fern Boutique" loading="lazy"></a></li>
-          <li><a href="https://www.pizzafactory.com/arnold/" rel="noopener"><img src="img/sponsors/pizza-factory-600.png" alt="Pizza Factory Arnold" loading="lazy"></a></li>
-          <li><a href="https://www.gatewaypress.net/" rel="noopener"><img src="img/sponsors/gateway-600.png" alt="Gateway Press" loading="lazy"></a></li>
-          <li><a href="https://www.cedarcreekrealty.com/" rel="noopener"><img src="img/sponsors/cedar-creek.png" alt="Cedar Creek Realty" loading="lazy"></a></li>
-          <li><a href="https://www.gerardinsurance.com/" rel="noopener"><img src="img/sponsors/gerard-insurance.png" alt="Gerard Insurance Services" loading="lazy"></a></li>
-          <li><a href="https://fireflybrandmanagement.com/" rel="noopener"><img src="img/sponsors/firefly.png" alt="Firefly Brand Management" loading="lazy"></a></li>
-          <li><a href="https://www.calaverasfitnessco.com" rel="noopener"><img src="img/sponsors/cross-fit.png" alt="CrossFit Calaveras" loading="lazy"></a></li>
-        </ul>
+        <div class="marquee" data-marquee>
+          <button type="button" class="marquee-toggle" aria-pressed="false">Pause</button>
+          <div class="marquee-viewport">
+            <ul class="marquee-track">
+            <li><a href="https://www.dignityhealth.org/central-california/locations/marktwainmedical/services/medical-clinics" rel="noopener"><img src="img/sponsors/dignity-health.png" alt="Dignity Health Mark Twain Medical Center" width="112" height="68" style="--w:112px" loading="lazy"></a></li>
+            <li><a href="https://peakperformancecare.com" rel="noopener"><img src="img/sponsors/peak-performance-600.png" alt="Peak Performance" width="120" height="63" style="--w:120px" loading="lazy"></a></li>
+            <li><a href="https://www.hammernutrition.com" rel="noopener"><img src="img/sponsors/hammer-nutrition.png" alt="Hammer Nutrition" width="119" height="64" style="--w:119px" loading="lazy"></a></li>
+            <li><a href="https://www.adventisthealth.org/sonora/" rel="noopener"><img src="img/sponsors/adventist-health-sonora.png" alt="Adventist Health Sonora" width="143" height="53" style="--w:143px" loading="lazy"></a></li>
+            <li><a href="https://www.snacattack.com" rel="noopener"><img src="img/sponsors/snac-2026.png" alt="Sierra Nevada Adventure Co." width="113" height="67" style="--w:113px" loading="lazy"></a></li>
+            <li><a href="https://www.ridemountainaloha.com/" rel="noopener"><img src="img/sponsors/mountain-aloha.png" alt="Mountain Aloha MTB Co." width="82" height="84" style="--w:82px" loading="lazy"></a></li>
+            <li><a href="https://www.bvadventures.com" rel="noopener"><img src="img/sponsors/bearvalley-stackedlogo-black-pms.png" alt="Bear Valley Adventure Co." width="89" height="84" style="--w:89px" loading="lazy"></a></li>
+            <li><a href="https://www.kevinscrane.com/" rel="noopener"><img src="img/sponsors/kevins-crane.png" alt="Kevin&#x27;s Crane Co." width="98" height="77" style="--w:98px" loading="lazy"></a></li>
+            <li><a href="https://www.goldelectricinc.com" rel="noopener"><img src="img/sponsors/gold.png" alt="Gold Electric" width="97" height="79" style="--w:97px" loading="lazy"></a></li>
+            <li><a href="https://www.poppiesnpines.com/" rel="noopener"><img src="img/sponsors/poppies-pines.png" alt="Poppies n&#x27; Pines" width="65" height="84" style="--w:65px" loading="lazy"></a></li>
+            <li><a href="https://cal-waste.com" rel="noopener"><img src="img/sponsors/cal-waste.png" alt="Cal-Waste" width="156" height="49" style="--w:156px" loading="lazy"></a></li>
+            <li><a href="https://boutique.allegorie.wine/" rel="noopener"><img src="img/sponsors/allegorie.png" alt="Allégorie" width="93" height="82" style="--w:93px" loading="lazy"></a></li>
+            <li><a href="https://www.yelp.com/biz/heart-and-soul-country-kitchen-arnold" rel="noopener"><img src="img/sponsors/heart-and-soul-kitchen.png" alt="Heart and Soul Country Kitchen" width="92" height="82" style="--w:92px" loading="lazy"></a></li>
+            <li><a href="https://hibernation.com/hibernation/" rel="noopener"><img src="img/sponsors/hibernation-stove-spa.png" alt="Hibernation Stove &amp; Spa" width="99" height="77" style="--w:99px" loading="lazy"></a></li>
+            <li><a href="https://www.arnoldlodgeca.com/" rel="noopener"><img src="img/sponsors/meadowmontlogowithdog.png" alt="Meadowmont Lodge" width="147" height="52" style="--w:147px" loading="lazy"></a></li>
+            <li><a href="https://www.arnoldtimberlinelodge.com" rel="noopener"><img src="img/sponsors/timerberline-lodge-2.png" alt="Timberline Lodge" width="112" height="68" style="--w:112px" loading="lazy"></a></li>
+            <li><a href="https://arnoldcaliforniahomes.com/" rel="noopener"><img src="img/sponsors/corcoran.png" alt="Corcoran Icon Properties" width="130" height="58" style="--w:130px" loading="lazy"></a></li>
+            <li><a href="https://crowleydds.com/" rel="noopener"><img src="img/sponsors/crowley-dentistry.png" alt="Crowley Dentistry" width="154" height="49" style="--w:154px" loading="lazy"></a></li>
+            <li><a href="https://www.jilliandayspa.com/" rel="noopener"><img src="img/sponsors/jillian-spa.png" alt="Jillian Day Spa &amp; Salon" width="62" height="84" style="--w:62px" loading="lazy"></a></li>
+            <li><a href="https://www.thesmogking.com/" rel="noopener"><img src="img/sponsors/smog-king.png" alt="The Smog King" width="99" height="76" style="--w:99px" loading="lazy"></a></li>
+            <li><a href="https://makepartake.com" rel="noopener"><img src="img/sponsors/makeandpartake-web.png" alt="Make &amp; parTake" width="182" height="42" style="--w:182px" loading="lazy"></a></li>
+            <li><a href="https://www.fawnandfernboutique.com/" rel="noopener"><img src="img/sponsors/fawn-and-fern-1.png" alt="Fawn &amp; Fern Boutique" width="84" height="84" style="--w:84px" loading="lazy"></a></li>
+            <li><a href="https://www.pizzafactory.com/arnold/" rel="noopener"><img src="img/sponsors/pizza-factory-600.png" alt="Pizza Factory Arnold" width="84" height="84" style="--w:84px" loading="lazy"></a></li>
+            <li><a href="https://www.gatewaypress.net/" rel="noopener"><img src="img/sponsors/gateway-600.png" alt="Gateway Press" width="115" height="66" style="--w:115px" loading="lazy"></a></li>
+            <li><a href="https://www.cedarcreekrealty.com/" rel="noopener"><img src="img/sponsors/cedar-creek.png" alt="Cedar Creek Realty" width="54" height="84" style="--w:54px" loading="lazy"></a></li>
+            <li><a href="https://www.gerardinsurance.com/" rel="noopener"><img src="img/sponsors/gerard-insurance.png" alt="Gerard Insurance Services" width="133" height="57" style="--w:133px" loading="lazy"></a></li>
+            <li><a href="https://fireflybrandmanagement.com/" rel="noopener"><img src="img/sponsors/firefly.png" alt="Firefly Brand Management" width="136" height="56" style="--w:136px" loading="lazy"></a></li>
+            <li><a href="https://www.calaverasfitnessco.com" rel="noopener"><img src="img/sponsors/cross-fit.png" alt="CrossFit Calaveras" width="84" height="84" style="--w:84px" loading="lazy"></a></li>
+            <li class="marquee-dup" aria-hidden="true"><ul>
+              <li><a href="https://www.dignityhealth.org/central-california/locations/marktwainmedical/services/medical-clinics" rel="noopener" tabindex="-1"><img src="img/sponsors/dignity-health.png" alt="" width="112" height="68" style="--w:112px" loading="lazy"></a></li>
+              <li><a href="https://peakperformancecare.com" rel="noopener" tabindex="-1"><img src="img/sponsors/peak-performance-600.png" alt="" width="120" height="63" style="--w:120px" loading="lazy"></a></li>
+              <li><a href="https://www.hammernutrition.com" rel="noopener" tabindex="-1"><img src="img/sponsors/hammer-nutrition.png" alt="" width="119" height="64" style="--w:119px" loading="lazy"></a></li>
+              <li><a href="https://www.adventisthealth.org/sonora/" rel="noopener" tabindex="-1"><img src="img/sponsors/adventist-health-sonora.png" alt="" width="143" height="53" style="--w:143px" loading="lazy"></a></li>
+              <li><a href="https://www.snacattack.com" rel="noopener" tabindex="-1"><img src="img/sponsors/snac-2026.png" alt="" width="113" height="67" style="--w:113px" loading="lazy"></a></li>
+              <li><a href="https://www.ridemountainaloha.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/mountain-aloha.png" alt="" width="82" height="84" style="--w:82px" loading="lazy"></a></li>
+              <li><a href="https://www.bvadventures.com" rel="noopener" tabindex="-1"><img src="img/sponsors/bearvalley-stackedlogo-black-pms.png" alt="" width="89" height="84" style="--w:89px" loading="lazy"></a></li>
+              <li><a href="https://www.kevinscrane.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/kevins-crane.png" alt="" width="98" height="77" style="--w:98px" loading="lazy"></a></li>
+              <li><a href="https://www.goldelectricinc.com" rel="noopener" tabindex="-1"><img src="img/sponsors/gold.png" alt="" width="97" height="79" style="--w:97px" loading="lazy"></a></li>
+              <li><a href="https://www.poppiesnpines.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/poppies-pines.png" alt="" width="65" height="84" style="--w:65px" loading="lazy"></a></li>
+              <li><a href="https://cal-waste.com" rel="noopener" tabindex="-1"><img src="img/sponsors/cal-waste.png" alt="" width="156" height="49" style="--w:156px" loading="lazy"></a></li>
+              <li><a href="https://boutique.allegorie.wine/" rel="noopener" tabindex="-1"><img src="img/sponsors/allegorie.png" alt="" width="93" height="82" style="--w:93px" loading="lazy"></a></li>
+              <li><a href="https://www.yelp.com/biz/heart-and-soul-country-kitchen-arnold" rel="noopener" tabindex="-1"><img src="img/sponsors/heart-and-soul-kitchen.png" alt="" width="92" height="82" style="--w:92px" loading="lazy"></a></li>
+              <li><a href="https://hibernation.com/hibernation/" rel="noopener" tabindex="-1"><img src="img/sponsors/hibernation-stove-spa.png" alt="" width="99" height="77" style="--w:99px" loading="lazy"></a></li>
+              <li><a href="https://www.arnoldlodgeca.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/meadowmontlogowithdog.png" alt="" width="147" height="52" style="--w:147px" loading="lazy"></a></li>
+              <li><a href="https://www.arnoldtimberlinelodge.com" rel="noopener" tabindex="-1"><img src="img/sponsors/timerberline-lodge-2.png" alt="" width="112" height="68" style="--w:112px" loading="lazy"></a></li>
+              <li><a href="https://arnoldcaliforniahomes.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/corcoran.png" alt="" width="130" height="58" style="--w:130px" loading="lazy"></a></li>
+              <li><a href="https://crowleydds.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/crowley-dentistry.png" alt="" width="154" height="49" style="--w:154px" loading="lazy"></a></li>
+              <li><a href="https://www.jilliandayspa.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/jillian-spa.png" alt="" width="62" height="84" style="--w:62px" loading="lazy"></a></li>
+              <li><a href="https://www.thesmogking.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/smog-king.png" alt="" width="99" height="76" style="--w:99px" loading="lazy"></a></li>
+              <li><a href="https://makepartake.com" rel="noopener" tabindex="-1"><img src="img/sponsors/makeandpartake-web.png" alt="" width="182" height="42" style="--w:182px" loading="lazy"></a></li>
+              <li><a href="https://www.fawnandfernboutique.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/fawn-and-fern-1.png" alt="" width="84" height="84" style="--w:84px" loading="lazy"></a></li>
+              <li><a href="https://www.pizzafactory.com/arnold/" rel="noopener" tabindex="-1"><img src="img/sponsors/pizza-factory-600.png" alt="" width="84" height="84" style="--w:84px" loading="lazy"></a></li>
+              <li><a href="https://www.gatewaypress.net/" rel="noopener" tabindex="-1"><img src="img/sponsors/gateway-600.png" alt="" width="115" height="66" style="--w:115px" loading="lazy"></a></li>
+              <li><a href="https://www.cedarcreekrealty.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/cedar-creek.png" alt="" width="54" height="84" style="--w:54px" loading="lazy"></a></li>
+              <li><a href="https://www.gerardinsurance.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/gerard-insurance.png" alt="" width="133" height="57" style="--w:133px" loading="lazy"></a></li>
+              <li><a href="https://fireflybrandmanagement.com/" rel="noopener" tabindex="-1"><img src="img/sponsors/firefly.png" alt="" width="136" height="56" style="--w:136px" loading="lazy"></a></li>
+              <li><a href="https://www.calaverasfitnessco.com" rel="noopener" tabindex="-1"><img src="img/sponsors/cross-fit.png" alt="" width="84" height="84" style="--w:84px" loading="lazy"></a></li>
+            </ul></li>
+            </ul>
+          </div>
+        </div>
         <div class="btn-row"><a class="btn" href="sponsors.html">Become a sponsor</a></div>
       </div>
     </section>
@@ -190,5 +225,6 @@
     </div>
   </footer>
   <script src="js/nav.js"></script>
+  <script src="js/marquee.js"></script>
 </body>
 </html>

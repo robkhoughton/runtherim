@@ -234,7 +234,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 }
 .sponsor-grid a:hover { border-color: var(--medium-green); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
 .sponsor-grid img { max-height: 100%; width: auto; object-fit: contain; }
-.sponsor-strip .sponsor-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
 
 /* Footer */
 .site-footer { background: var(--dark-green); color: var(--white); padding: 2.5rem 0 2rem; font-size: 0.95rem; }
@@ -291,3 +290,37 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .timeline li.go .t { font-size: 1.15rem; }
 @media (max-width: 420px) { .timeline li { grid-template-columns: 7.2rem 1fr; padding: 0.65rem 0.8rem; } }
 [hidden] { display: none !important; }
+
+/* Home sponsor strip: one slow, looping row (js/marquee.js adds the Pause button behavior).
+   Logos are trimmed of built-in margins and sized to equal visual area in index.html (--w).
+   The second copy of the list is aria-hidden and untabbable; it only makes the loop seamless. */
+.sponsor-strip { background: var(--white); border-top: 1px solid #E5E5E5; }
+.marquee { position: relative; margin-top: 1.5rem; }
+.marquee-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.marquee-track, .marquee-dup ul { display: flex; align-items: center; gap: 2.75rem; margin: 0; padding: 0; list-style: none; width: max-content; }
+.marquee-track { animation: rtr-marquee 80s linear infinite; padding-left: 2.75rem; }
+.marquee-track li { flex: 0 0 auto; }
+.marquee-track a { display: flex; align-items: center; justify-content: center; height: 100px; border-radius: var(--radius); }
+.marquee-track img { width: var(--w); max-width: none; height: auto; }
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track, .marquee.paused .marquee-track { animation-play-state: paused; }
+@keyframes rtr-marquee { to { transform: translateX(-50%); } }
+.marquee-toggle {
+  position: absolute; right: 0; top: -3.4rem; font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  background: var(--white); color: var(--dark-green); border: 2px solid var(--medium-green); border-radius: var(--radius); padding: 0.25rem 0.75rem;
+}
+.marquee-toggle:focus-visible, .marquee-track a:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+@media (max-width: 760px) {
+  .marquee-track img { width: calc(var(--w) * 0.8); }
+  .marquee-track a { height: 84px; }
+  .marquee-toggle { position: static; margin-bottom: 0.5rem; }
+}
+/* Reduced motion: no animation; the row scrolls by hand and the duplicate copy is dropped. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .marquee-viewport { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .marquee-dup, .marquee-toggle { display: none; }
+}
