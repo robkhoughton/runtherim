@@ -18,7 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -43,6 +44,17 @@
       <div class="wrap">
         <h1>Race Day</h1>
         <p>Sunday, June 6, 2027 · White Pines Park, Arnold, California</p>
+        <div class="dist-picker" role="group" aria-label="Show race day for one distance">
+          <span class="dist-picker-label">Your distance</span>
+          <div class="dist-buttons">
+            <button type="button" data-pick="50k">50K</button>
+            <button type="button" data-pick="35k">35K</button>
+            <button type="button" data-pick="21k">21K</button>
+            <button type="button" data-pick="10k">10K</button>
+            <button type="button" data-pick="5k">5K</button>
+            <button type="button" data-pick="all">All</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -53,8 +65,40 @@
           <h3>Saturday, June 5</h3>
           <p>Bib pickup, 3:00–5:00 PM. Location to be announced.</p>
           <h3>Race morning, Sunday, June 6</h3>
-          <p>Check in at <a href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park</a>.</p>
-          <div class="table-scroll">
+          <p data-dist="all">Check in at <a href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park</a>.</p>
+          <ol class="timeline" data-dist="50k" aria-label="50K race morning">
+            <li><span class="t">6:00–6:30 AM</span><span>Check in at <a href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park</a></span></li>
+            <li><span class="t"><strong>6:30 AM sharp</strong></span><span>Shuttle leaves White Pines Park for the start</span></li>
+            <li class="go"><span class="t">7:00 AM</span><span><strong>50K start</strong> · Fullen Road, Arnold Rim Trail Post 100</span></li>
+            <li><span class="t">Finish</span><span>White Pines Park</span></li>
+            <li><span class="t">5:00 PM</span><span>All runners off the course</span></li>
+          </ol>
+          <ol class="timeline" data-dist="35k" aria-label="35K race morning">
+            <li><span class="t">7:00–7:30 AM</span><span>Check in at <a href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park</a></span></li>
+            <li><span class="t"><strong>7:30 AM sharp</strong></span><span>Shuttle leaves White Pines Park for the start</span></li>
+            <li class="go"><span class="t">8:00 AM</span><span><strong>35K start</strong> · Fullen Road, Arnold Rim Trail Post 100</span></li>
+            <li><span class="t">Finish</span><span>White Pines Park</span></li>
+            <li><span class="t">5:00 PM</span><span>All runners off the course</span></li>
+          </ol>
+          <ol class="timeline" data-dist="21k" aria-label="21K race morning">
+            <li><span class="t">6:30–8:00 AM</span><span>Check in at <a href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park</a></span></li>
+            <li class="go"><span class="t">8:30 AM</span><span><strong>21K start</strong> · White Pines Park</span></li>
+            <li><span class="t">Finish</span><span>White Pines Park</span></li>
+            <li><span class="t">5:00 PM</span><span>All runners off the course</span></li>
+          </ol>
+          <ol class="timeline" data-dist="10k" aria-label="10K race morning">
+            <li><span class="t">6:30–8:00 AM</span><span>Check in at <a href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park</a></span></li>
+            <li class="go"><span class="t">8:45 AM</span><span><strong>10K start</strong> · White Pines Park</span></li>
+            <li><span class="t">Finish</span><span>White Pines Park</span></li>
+            <li><span class="t">5:00 PM</span><span>All runners off the course</span></li>
+          </ol>
+          <ol class="timeline" data-dist="5k" aria-label="5K race morning">
+            <li><span class="t">6:30–8:00 AM</span><span>Check in at <a href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park</a></span></li>
+            <li class="go"><span class="t">9:00 AM</span><span><strong>5K start</strong> · White Pines Park</span></li>
+            <li><span class="t">Finish</span><span>White Pines Park</span></li>
+            <li><span class="t">5:00 PM</span><span>All runners off the course</span></li>
+          </ol>
+          <div class="table-scroll" data-dist="all">
             <table>
               <caption>Race-morning schedule</caption>
               <thead><tr><th scope="col">Distance</th><th scope="col">Check in</th><th scope="col">Shuttle leaves</th><th scope="col">Start</th></tr></thead>
@@ -71,15 +115,15 @@
         <div>
           <h2 id="directions">Getting there</h2>
           <ul>
-            <li><strong>50K and 35K start:</strong> Fullen Road, Arnold Rim Trail Post 100. A shuttle takes runners from White Pines Park to the start.</li>
-            <li><strong>21K, 10K and 5K start:</strong> White Pines Park.</li>
+            <li data-dist="all 50k 35k"><strong>50K and 35K start:</strong> Fullen Road, Arnold Rim Trail Post 100. A shuttle takes runners from White Pines Park to the start.</li>
+            <li data-dist="all 21k 10k 5k"><strong>21K, 10K and 5K start:</strong> White Pines Park.</li>
             <li><strong>Every distance finishes at White Pines Park</strong>, 1965 Blagen Rd, Arnold, CA (at Blagen Rd and Dunlap Rd).</li>
             <li><strong>Directions:</strong> From Highway 4, turn left on Blagen Road, then left on Dunlap Road.</li>
             <li><strong>Parking:</strong> <a href="https://maps.app.goo.gl/1xpXbbiBSWtzzhTFA">Hazel Fisher Elementary School lot</a>, Dunlap Rd, Arnold.</li>
           </ul>
           <div class="btn-row">
-            <a class="btn" href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park map</a>
-            <a class="btn" href="https://maps.app.goo.gl/1xpXbbiBSWtzzhTFA">Parking map</a>
+            <a class="btn" href="https://maps.app.goo.gl/gSgLodYUDQMigVhQ9">White Pines Park in Google Maps</a>
+            <a class="btn" href="https://maps.app.goo.gl/1xpXbbiBSWtzzhTFA">Hazel Fisher lot in Google Maps</a>
           </div>
         </div>
       </div>
@@ -87,9 +131,9 @@
 
     <section class="band" aria-labelledby="map-title">
       <div class="wrap">
-        <h2 id="map-title">White Pines Lake race map</h2>
+        <h2 id="map-title">Parking map</h2>
         <figure class="map-figure">
-          <a href="img/race-map.png"><img src="img/race-map.png" width="639" height="852" alt="Map of White Pines Park showing the start and finish area, the Hazel Fisher Elementary parking lot, and the walking route to the start" loading="lazy"></a>
+          <a href="img/race-map.png"><img src="img/race-map.png" width="639" height="852" alt="Parking map of White Pines Lake: Lot 1 at Hazel Fisher Elementary School, Lot 2 in White Pines Park and Lot 3 by Stacy&#x27;s Snack Shack, with the start and finish area, the racecourse, and the pedestrian route from Lots 2 and 3 to the start" loading="lazy"></a>
           <figcaption>Tap the map to open it full size.</figcaption>
         </figure>
       </div>
@@ -137,5 +181,6 @@
     </div>
   </footer>
   <script src="js/nav.js"></script>
+  <script src="js/race-day.js"></script>
 </body>
 </html>

@@ -259,3 +259,35 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .hero .wrap { padding-top: 1rem; padding-bottom: 2rem; }
   .hero h1, .hero .date, .hero .distances { text-shadow: none; }
 }
+
+/* Race Day: distance picker and per-distance race-morning timeline (js/race-day.js).
+   Without JS the picker and timelines stay hidden and the full schedule table shows. */
+.dist-picker { display: none; }
+.js .dist-picker { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 1.25rem; }
+.dist-picker-label { font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--dark-green); margin-right: 0.25rem; width: 100%; }
+@media (min-width: 640px) { .dist-picker-label { width: auto; } }
+/* Segmented control: the six options share borders so they fit one row on a 360px phone. */
+.dist-buttons { display: flex; }
+.dist-picker button {
+  font: inherit; font-weight: 700; min-width: 3.4rem; padding: 0.55rem 0.7rem; cursor: pointer; margin-left: -2px;
+  background: var(--white); color: var(--dark-green); border: 2px solid var(--medium-green); border-radius: 0;
+}
+.dist-picker button:first-child { margin-left: 0; border-radius: var(--radius) 0 0 var(--radius); }
+.dist-picker button:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+.dist-picker button:hover { background: var(--bg-green); }
+.dist-picker button[aria-pressed="true"] { background: var(--dark-green); border-color: var(--dark-green); color: var(--white); position: relative; }
+.dist-picker button:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; position: relative; z-index: 1; }
+@media (max-width: 420px) { .dist-picker button { min-width: 0; flex: 1 1 0; padding: 0.6rem 0.2rem; font-size: 0.98rem; } .dist-buttons { width: 100%; } }
+
+.timeline { display: none; }
+.js .timeline:not([hidden]) {
+  display: block; list-style: none; margin: 1rem 0; padding: 0.25rem 0;
+  background: var(--white); border: 1px solid #D9D9D9; border-top: 5px solid var(--sky); border-radius: var(--radius);
+}
+.timeline li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0.75rem; padding: 0.7rem 1rem; border-bottom: 1px solid #EEEEEE; }
+.timeline li:last-child { border-bottom: 0; }
+.timeline .t { font-weight: 700; color: var(--dark-green); font-variant-numeric: tabular-nums; }
+.timeline li.go { background: var(--bg-green); }
+.timeline li.go .t { font-size: 1.15rem; }
+@media (max-width: 420px) { .timeline li { grid-template-columns: 7.2rem 1fr; padding: 0.65rem 0.8rem; } }
+[hidden] { display: none !important; }
