@@ -347,3 +347,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .logo-feature img { width: 100%; border-radius: 0; }
 /* Powder Blue frame on both images in Home's "The race" (Rob, 2026-11-20). */
 .race-side > img, .logo-feature { border: 2px solid var(--sky); }
+
+/* Trailforks route widgets (courses.html): reserve the height so the page doesn't jump. */
+.tf-map { margin: 1.25rem 0; }
+.TrailforksWidgetRoute { min-height: 500px; background: var(--bg-green); border: 2px solid var(--sky); border-radius: var(--radius); overflow: hidden; }
+.tf-map figcaption { margin-top: 0.4rem; }
