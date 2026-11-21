@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=18">
+  <link rel="stylesheet" href="css/style.css?v=19">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -45,9 +45,21 @@
         <h1>Courses</h1>
         <p>Five distances, one finish line. Quality singletrack nearly all the way, and every distance ends the same way: ¾ mile of paved singletrack, then a ¼&#8209;mile paved sprint to the finish at White Pines Lake.</p>
         <p class="small">Aid-station cutoffs will be published in the 2027 Runner Guide.</p>
-        <nav class="jump" aria-label="Jump to course"><a href="#50k">50K Ultra</a><a href="#35k">35K ART Classic</a><a href="#21k">21K Half Marathon</a><a href="#10k">10K Quarter Horse</a><a href="#5k">5K Gateway</a></nav>
       </div>
     </div>
+
+    <nav class="course-nav" id="course-nav" aria-label="Compare the courses">
+      <div class="wrap">
+        <span class="course-nav-label">Compare the courses</span>
+        <ul>
+          <li><a href="#50k"><span class="cn-name"><b>50K</b> Ultra</span><span class="cn-stats">31.4 mi · 5,900 ft</span></a></li>
+          <li><a href="#35k"><span class="cn-name"><b>35K</b> ART Classic</span><span class="cn-stats">22.2 mi · 4,900 ft</span></a></li>
+          <li><a href="#21k"><span class="cn-name"><b>21K</b> Half Marathon</span><span class="cn-stats">13.5 mi · 2,000 ft</span></a></li>
+          <li><a href="#10k"><span class="cn-name"><b>10K</b> Quarter Horse</span><span class="cn-stats">6.2 mi · 700 ft</span></a></li>
+          <li><a href="#5k"><span class="cn-name"><b>5K</b> Gateway</span><span class="cn-stats">3.1 mi · 250 ft</span></a></li>
+        </ul>
+      </div>
+    </nav>
 
 
     <section class="course" id="50k" aria-labelledby="h-50k">
@@ -333,6 +345,7 @@
     </div>
   </footer>
   <script src="js/nav.js"></script>
+  <script src="js/courses-nav.js"></script>
   <script src="js/trailforks.js"></script>
 </body>
 </html>

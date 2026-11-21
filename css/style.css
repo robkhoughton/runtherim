@@ -226,9 +226,38 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .small { font-size: 0.88rem; color: var(--lavender-gray); }
 .callout { background: var(--bg-green); border-left: 5px solid var(--medium-green); padding: 0.75rem 1rem; border-radius: var(--radius); margin: 1rem 0; }
 
-.jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-.jump a { padding: 0.35rem 0.85rem; border-radius: 999px; background: var(--white); text-decoration: none; font-weight: 700; border: 2px solid var(--btn-border-light); }
-.jump a:hover { background: var(--medium-green); color: var(--white); }
+/* Courses: distance bar that sticks under the site header so runners can hop between courses
+   and compare them while scrolling (Rob, 2026-11-21). js/courses-nav.js sets --header-h and
+   marks the course on screen with aria-current. Phones: one row that scrolls sideways. */
+.course-nav {
+  position: sticky; top: var(--header-h, calc(4rem + 2px)); z-index: 40;
+  background: var(--white); border-bottom: 1px solid #D9D9D9; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.course-nav .wrap { display: flex; align-items: center; gap: 0.75rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.course-nav-label { flex: 0 0 auto; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--lavender-gray); }
+.course-nav ul { list-style: none; margin: 0; padding: 2px; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: thin; }
+.course-nav a {
+  display: block; padding: 0.3rem 0.8rem; border-radius: var(--radius); white-space: nowrap; text-decoration: none;
+  background: var(--white); color: var(--dark-green); border: 2px solid var(--btn-border-light); line-height: 1.25;
+}
+.course-nav .cn-name { display: block; font-weight: 600; font-size: 0.92rem; }
+.course-nav .cn-stats { display: block; font-size: 0.78rem; color: var(--lavender-gray); }
+.course-nav a:hover { background: var(--bg-green); }
+/* The course on screen: green with a Powder Blue ring, like the current page in the main menu. */
+.course-nav a[aria-current="true"] { background: var(--medium-green); color: var(--white); border-color: var(--sky); }
+.course-nav a[aria-current="true"] .cn-stats { color: var(--white); }
+.course-nav a:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+/* Anchor jumps land below both the header and this bar (JS refines --course-nav-h). */
+/* html already reserves 5rem (scroll-padding-top) and the two add up, so subtract it. */
+.course { scroll-margin-top: calc(var(--header-h, calc(4rem + 2px)) + var(--course-nav-h, 4rem) + 0.5rem - 5rem); }
+@media (max-width: 900px) {
+  .course-nav-label { display: none; }
+  .course-nav .wrap { padding-left: 0.75rem; padding-right: 0.75rem; }
+}
+@media (max-width: 520px) {
+  .course-nav .cn-stats { display: none; }
+  .course-nav a { padding: 0.35rem 0.7rem; }
+}
 
 .legend { list-style: none; padding: 0; margin: 0.5rem 0 0; }
 .legend li { margin-bottom: 0.25rem; }
