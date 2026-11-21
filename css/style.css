@@ -345,3 +345,5 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .race-side { display: grid; gap: 1.25rem; }
 .logo-feature { background: var(--black); border-radius: var(--radius); padding: 1rem 1.25rem; }
 .logo-feature img { width: 100%; border-radius: 0; }
+/* Powder Blue frame on both images in Home's "The race" (Rob, 2026-11-20). */
+.race-side > img, .logo-feature { border: 2px solid var(--sky); }
