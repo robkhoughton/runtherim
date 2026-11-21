@@ -363,3 +363,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .aid-block { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 1.5rem; align-items: start; }
   .aid-legend { margin-top: 0; padding-top: 1.6rem; }
 }
+/* Thin Powder Blue line wherever the background color changes (same 2px as the button rings).
+   Header bottom, page-title bottom, hero bottom, both edges of a green band, footer top.
+   A band that is the last section in <main> drops its bottom line, since the footer's top line covers it. */
+.site-header, .page-title, .hero { border-bottom: 2px solid var(--sky); }
+section.band { border-top: 2px solid var(--sky); border-bottom: 2px solid var(--sky); }
+main > section.band:last-child { border-bottom: 0; }
+.site-footer { border-top: 2px solid var(--sky); }
