@@ -209,6 +209,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .course:first-of-type { border-top: 0; }
 .course-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1.25rem; }
 .course-head h2 { margin: 0; }
+.course-head h2 .title { color: var(--medium-green); }
 .course-head .start { font-weight: 700; color: var(--medium-green); font-size: 1.2rem; }
 .stats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; padding: 0; list-style: none; }
 .stats li { background: var(--bg-green); border-radius: var(--radius); padding: 0.4rem 0.8rem; font-size: 0.95rem; }
@@ -352,3 +353,4 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .tf-map { margin: 1.25rem 0; }
 .TrailforksWidgetRoute { min-height: 500px; background: var(--white); border: 2px solid var(--sky); border-radius: var(--radius); overflow: hidden; }
 .tf-map figcaption { margin-top: 0.4rem; }
+.nw { white-space: nowrap; }
