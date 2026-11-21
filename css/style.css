@@ -65,15 +65,13 @@ h3 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; }
   display: flex; align-items: center; justify-content: space-between;
   gap: 1rem; min-height: 4rem; flex-wrap: wrap;
 }
-/* Header bookends (Rob, 2026-11-20): text wordmark on the left, menu, logo on the right.
-   The logo is art on black, so the header is black (brand guide: Black or Dark Green for
-   headers carrying an on-dark logo). The logo image is decorative; the wordmark carries the name. */
+/* Header: text wordmark on the left, menu on the right, on Black. The RTR logo lives in
+   Home's "The race" section (.logo-feature), not here (Rob, 2026-11-20). */
 .wordmark {
   display: block; padding: 0.5rem 0;
   color: var(--white); text-decoration: none;
   font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 1.25rem; line-height: 1.3;
 }
-.header-logo { height: 64px; width: auto; margin: 0.5rem 0; }
 .site-nav { margin-left: auto; }
 .wordmark:hover { color: var(--white); }
 .wordmark span { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; color: var(--bg-green); }
@@ -91,8 +89,8 @@ h3 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; }
 .site-nav a.nav-register { background: var(--orange); color: var(--dark-green); border-color: var(--cta-border); }
 .site-nav a.nav-register:hover { background: var(--orange-hover); color: var(--dark-green); }
 
-/* The bookended header (wordmark | menu | logo) needs ~880px on one row, so below 900px the
-   menu collapses behind the Menu button. */
+/* Wordmark plus six menu items need ~880px on one row, so below 900px the menu collapses
+   behind the Menu button. */
 @media (max-width: 900px) {
   .nav-toggle {
     display: inline-block; background: transparent; color: var(--white);
@@ -103,7 +101,6 @@ h3 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; }
   .wordmark { font-size: 1.05rem; }
   .wordmark span { display: none; }
   .nav-toggle { margin-left: auto; }
-  .header-logo { height: 44px; margin: 0.4rem 0; }
   .site-nav { order: 5; margin-left: 0; }
   .site-nav { width: 100%; display: none; padding-bottom: 0.75rem; }
   .site-nav.open { display: block; }
@@ -343,3 +340,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .marquee-viewport { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
   .marquee-dup, .marquee-toggle { display: none; }
 }
+
+/* Home "The race": the RTR logo (art on black) in a black panel above the race photo. */
+.race-side { display: grid; gap: 1.25rem; }
+.logo-feature { background: var(--black); border-radius: var(--radius); padding: 1rem 1.25rem; }
+.logo-feature img { width: 100%; border-radius: 0; }
