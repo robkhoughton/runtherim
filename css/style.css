@@ -354,3 +354,12 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .TrailforksWidgetRoute { min-height: 500px; background: var(--white); border: 2px solid var(--sky); border-radius: var(--radius); overflow: hidden; }
 .tf-map figcaption { margin-top: 0.4rem; }
 .nw { white-space: nowrap; }
+/* Aid table with its legend: legend below on phones, to the right on wider screens. */
+.aid-block { margin: 1rem 0; }
+.aid-block .table-scroll { margin: 0; }
+.aid-legend { margin-top: 0.75rem; font-size: 0.95rem; }
+.aid-legend h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--dark-green); margin: 0 0 0.25rem; }
+@media (min-width: 760px) {
+  .aid-block { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 1.5rem; align-items: start; }
+  .aid-legend { margin-top: 0; padding-top: 1.6rem; }
+}
