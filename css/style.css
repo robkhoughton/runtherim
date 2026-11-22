@@ -282,6 +282,77 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .sponsor-grid a:hover { border-color: var(--medium-green); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
 .sponsor-grid img { max-height: 100%; width: auto; object-fit: contain; }
 
+/* Sponsors page: tiers per the sponsor log (Sponsors/2026/2026-RTR-sponsor-list). Each tier steps
+   down in card size, label weight and border so Platinum reads first and Bronze reads quietest. */
+.sponsor-tier { margin-top: 2.5rem; text-align: center; }
+.sponsor-tier h3 {
+  margin: 0; color: var(--dark-green); text-transform: uppercase; letter-spacing: 0.12em;
+  display: flex; align-items: center; gap: 1rem;
+}
+.sponsor-tier h3::before, .sponsor-tier h3::after { content: ""; flex: 1; border-top: 1px solid #D9D9D9; }
+.sponsor-tier .sponsor-grid { display: flex; flex-wrap: wrap; justify-content: center; }
+.sponsor-tier .sponsor-grid li { flex: 0 0 var(--card); max-width: 100%; }
+.sponsor-tier .sponsor-grid a { aspect-ratio: var(--ratio, 1 / 1); }
+
+.tier-platinum { --card: 300px; --ratio: 3 / 2; }
+.tier-platinum h3 { font-size: 1.5rem; }
+.tier-platinum h3::before, .tier-platinum h3::after { border-top: 2px solid var(--medium-green); }
+.tier-platinum .sponsor-grid { gap: 1.5rem; }
+.tier-platinum .sponsor-grid a { border: 2px solid var(--medium-green); padding: 1.5rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10); }
+
+.tier-gold { --card: 190px; }
+.tier-gold h3 { font-size: 1.25rem; }
+.tier-gold .sponsor-grid { gap: 1.25rem; }
+.tier-gold .sponsor-grid a { border-color: var(--light-green); padding: 1.1rem; }
+
+.tier-silver { --card: 145px; }
+.tier-silver h3 { font-size: 1.05rem; }
+.tier-silver .sponsor-grid a { padding: 0.85rem; }
+
+.tier-bronze { --card: 110px; }
+.tier-bronze h3 { font-size: 0.9rem; font-weight: 600; }
+.tier-bronze .sponsor-grid { gap: 0.75rem; }
+.tier-bronze .sponsor-grid a { padding: 0.6rem; }
+
+@media (max-width: 520px) {
+  .tier-platinum { --card: 100%; --ratio: 2 / 1; }
+  .tier-gold { --card: calc(50% - 0.65rem); }
+  .tier-silver { --card: calc(33.333% - 0.7rem); }
+  .tier-bronze { --card: calc(25% - 0.6rem); }
+}
+
+/* Carousel mode (js/sponsor-tiers.js adds .is-carousel). Each tier becomes one looping row; the
+   script appends aria-hidden copies of the list and sets --shift (one list's width) and the duration.
+   Each list carries trailing padding equal to its gap so copies butt together seamlessly. */
+.tiers-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; }
+.tiers-head h2 { margin-bottom: 0; }
+.tiers-head .tiers-toggle { position: static; }
+.tier-viewport {
+  overflow: hidden; margin-top: 1.25rem; padding: 0.5rem 0 0.9rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.tier-track { display: flex; width: max-content; animation: rtr-tier-scroll 40s linear infinite; }
+.sponsor-tier.is-carousel .sponsor-grid {
+  flex-wrap: nowrap; margin: 0; width: max-content; padding-right: var(--gap);
+  gap: var(--gap);
+}
+.sponsor-tier.is-carousel .sponsor-grid li { flex: 0 0 var(--card); }
+.is-carousel.tier-platinum { --gap: 1.5rem; }
+.is-carousel.tier-gold { --gap: 1.25rem; }
+.is-carousel.tier-silver { --gap: 1rem; }
+.is-carousel.tier-bronze { --gap: 0.75rem; }
+.sponsor-tier.is-carousel:hover .tier-track,
+.sponsor-tier.is-carousel:focus-within .tier-track,
+.paused .tier-track { animation-play-state: paused; }
+@keyframes rtr-tier-scroll { to { transform: translateX(calc(-1 * var(--shift, 50%))); } }
+@media (max-width: 520px) {
+  .is-carousel.tier-platinum { --card: 240px; }
+  .is-carousel.tier-gold { --card: 150px; }
+  .is-carousel.tier-silver { --card: 115px; }
+  .is-carousel.tier-bronze { --card: 90px; }
+}
+
 /* Footer */
 .site-footer { background: var(--dark-green); color: var(--white); padding: 2.5rem 0 2rem; font-size: 0.95rem; }
 .site-footer a { color: var(--white); }
