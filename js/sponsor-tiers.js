@@ -1,17 +1,16 @@
 /* Sponsors page: turns each tier's logo list into a looping carousel.
    The original list stays the only copy screen readers and keyboards see; the filler copies that make
    the loop seamless are aria-hidden and untabbable. Copies are added until the row is wider than the
-   viewport, so short tiers (Gold, Bronze) loop without a gap. Every tier moves at the same speed in
+   viewport, so short tiers (Gold, Bronze) loop without a gap. Tiers may sit in several sections;
+   one Pause button (.tiers-toggle) stops them all. Every tier moves at the same speed in
    px/s regardless of card size. Without JS, or with reduced motion, the static tier grids remain. */
 (function () {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var SPEED = 28; // px per second
   var tiers = [];
-  var section = document.querySelector('[data-sponsor-tiers]');
-  if (!section) return;
-
-  var lists = section.querySelectorAll('.sponsor-tier .sponsor-grid');
+  var lists = document.querySelectorAll('[data-sponsor-tiers] .sponsor-tier .sponsor-grid');
+  if (!lists.length) return;
   for (var i = 0; i < lists.length; i++) {
     var list = lists[i];
     var viewport = document.createElement('div');
@@ -57,11 +56,11 @@
   window.addEventListener('load', layout);
   layout();
 
-  var toggle = section.querySelector('.tiers-toggle');
+  var toggle = document.querySelector('.tiers-toggle');
   if (toggle) {
     toggle.hidden = false;
     toggle.addEventListener('click', function () {
-      var paused = section.classList.toggle('paused');
+      var paused = document.documentElement.classList.toggle('tiers-paused');
       toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
       toggle.textContent = paused ? 'Play' : 'Pause';
     });

@@ -344,7 +344,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .is-carousel.tier-bronze { --gap: 0.75rem; }
 .sponsor-tier.is-carousel:hover .tier-track,
 .sponsor-tier.is-carousel:focus-within .tier-track,
-.paused .tier-track { animation-play-state: paused; }
+.tiers-paused .tier-track { animation-play-state: paused; }
 @keyframes rtr-tier-scroll { to { transform: translateX(calc(-1 * var(--shift, 50%))); } }
 @media (max-width: 520px) {
   .is-carousel.tier-platinum { --card: 240px; }
@@ -479,3 +479,17 @@ main > section.band:last-child { border-bottom: 0; }
 .surface-ring .track { stroke: #E6E6E6; }
 .surface-ring .fill { stroke: var(--medium-green); stroke-linecap: butt; }
 .surface-ring .pct { font: 700 22px "Open Sans", Arial, sans-serif; fill: var(--dark-green); text-anchor: middle; dominant-baseline: central; }
+
+/* Sponsors page: sponsorship-levels comparison table (white on the green band). */
+.levels { background: var(--white); }
+.levels th[scope="row"] { font-weight: 600; color: var(--dark-green); }
+.levels td { text-align: center; white-space: nowrap; }
+.levels thead th:not(:first-child) { text-align: center; }
+.levels thead th:nth-child(2) { background: var(--medium-green); }
+.levels-note { font-size: 0.92rem; color: var(--lavender-gray); margin-top: 0; }
+@media (max-width: 520px) { .levels td { white-space: normal; } }
+.band .stats li { background: var(--white); }
+.levels { table-layout: fixed; }
+.levels thead th:first-child { width: 34%; }
+@media (max-width: 520px) { .levels thead th:first-child { width: 30%; } }
+.sponsor-tier:first-child { margin-top: 0; }
