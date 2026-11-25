@@ -20,9 +20,16 @@
     root.style.setProperty('--course-nav-h', bar.offsetHeight + 'px');
     if (wasOpen) nav.classList.add('open');
   }
+  // Fade the bar's right edge while more chips lie off-screen (phones), so the row reads as scrollable.
+  function edge() {
+    list.classList.toggle('more', list.scrollLeft + list.clientWidth < list.scrollWidth - 4);
+  }
+  list.addEventListener('scroll', edge, { passive: true });
+
   measure();
-  window.addEventListener('resize', measure);
-  window.addEventListener('load', measure);
+  edge();
+  window.addEventListener('resize', function () { measure(); edge(); });
+  window.addEventListener('load', function () { measure(); edge(); });
 
   var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
   var current = null;

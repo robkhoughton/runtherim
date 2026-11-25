@@ -2,6 +2,7 @@
    Palette and type follow ARTA/Assets/ARTA_Brand_Guidelines.md */
 
 :root {
+  color-scheme: only light; /* light-only site: stops browser auto-dark modes repainting it (Safari Adaptive Dark Mode) */
   --dark-green: #013300;
   --medium-green: #366B37;
   --light-green: #4F8750;
@@ -67,8 +68,11 @@ h3 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; }
 }
 /* Header: text wordmark on the left, menu on the right, on Black. The RTR logo lives in
    Home's "The race" section (.logo-feature), not here (Rob, 2026-11-20). */
+/* The wordmark holds the header's top row at 4rem on its own. Without this the row's height came
+   from the flex container's min-height, and when the mobile menu wrapped onto a second row the first
+   row shrank to its content and the header jumped up (Joel, 2026-11-25). */
 .wordmark {
-  display: block; padding: 0.5rem 0;
+  display: flex; flex-direction: column; justify-content: center; min-height: 4rem; padding: 0.5rem 0;
   color: var(--white); text-decoration: none;
   font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 1.25rem; line-height: 1.3;
 }
@@ -254,9 +258,16 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .course-nav-label { display: none; }
   .course-nav .wrap { padding-left: 0.75rem; padding-right: 0.75rem; }
 }
+/* Phones: stats stay visible in smaller type, and the right edge fades while more chips lie off-screen
+   (js/courses-nav.js removes .more at the end of the row). */
+.course-nav ul.more {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent);
+          mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent);
+}
 @media (max-width: 520px) {
-  .course-nav .cn-stats { display: none; }
-  .course-nav a { padding: 0.35rem 0.7rem; }
+  .course-nav .cn-name { font-size: 0.85rem; }
+  .course-nav .cn-stats { font-size: 0.7rem; }
+  .course-nav a { padding: 0.3rem 0.6rem; }
 }
 
 .legend { list-style: none; padding: 0; margin: 0.5rem 0 0; }
@@ -319,38 +330,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .tier-gold { --card: calc(50% - 0.65rem); }
   .tier-silver { --card: calc(33.333% - 0.7rem); }
   .tier-bronze { --card: calc(25% - 0.6rem); }
-}
-
-/* Carousel mode (js/sponsor-tiers.js adds .is-carousel). Each tier becomes one looping row; the
-   script appends aria-hidden copies of the list and sets --shift (one list's width) and the duration.
-   Each list carries trailing padding equal to its gap so copies butt together seamlessly. */
-.tiers-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; }
-.tiers-head h2 { margin-bottom: 0; }
-.tiers-head .tiers-toggle { position: static; }
-.tier-viewport {
-  overflow: hidden; margin-top: 1.25rem; padding: 0.5rem 0 0.9rem;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-}
-.tier-track { display: flex; width: max-content; animation: rtr-tier-scroll 40s linear infinite; }
-.sponsor-tier.is-carousel .sponsor-grid {
-  flex-wrap: nowrap; margin: 0; width: max-content; padding-right: var(--gap);
-  gap: var(--gap);
-}
-.sponsor-tier.is-carousel .sponsor-grid li { flex: 0 0 var(--card); }
-.is-carousel.tier-platinum { --gap: 1.5rem; }
-.is-carousel.tier-gold { --gap: 1.25rem; }
-.is-carousel.tier-silver { --gap: 1rem; }
-.is-carousel.tier-bronze { --gap: 0.75rem; }
-.sponsor-tier.is-carousel:hover .tier-track,
-.sponsor-tier.is-carousel:focus-within .tier-track,
-.tiers-paused .tier-track { animation-play-state: paused; }
-@keyframes rtr-tier-scroll { to { transform: translateX(calc(-1 * var(--shift, 50%))); } }
-@media (max-width: 520px) {
-  .is-carousel.tier-platinum { --card: 240px; }
-  .is-carousel.tier-gold { --card: 150px; }
-  .is-carousel.tier-silver { --card: 115px; }
-  .is-carousel.tier-bronze { --card: 90px; }
 }
 
 /* Footer */
