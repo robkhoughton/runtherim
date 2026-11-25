@@ -183,7 +183,7 @@ section.band { background: var(--bg-green); }
    on the shared scale, so the climbs compare at a glance. Profiles come from _tools/elevation_profiles.py. */
 .course-rows { list-style: none; padding: 0; margin: 1.5rem 0 1rem; display: grid; gap: 0.75rem; }
 .course-row {
-  display: grid; grid-template-columns: 12rem 1fr minmax(0, 1.4fr); gap: 0.5rem 1.5rem; align-items: center;
+  display: grid; grid-template-columns: 12rem 1fr auto minmax(0, 1.4fr); gap: 0.5rem 1.5rem; align-items: center;
   background: var(--white); border-left: 5px solid var(--sky); border-radius: var(--radius); padding: 1rem 1.25rem;
   text-decoration: none; color: var(--black); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
@@ -195,11 +195,20 @@ section.band { background: var(--bg-green); }
 .cr-start strong { color: var(--black); }
 .cr-stats { display: flex; flex-direction: column; gap: 0.15rem; font-size: 0.92rem; color: var(--lavender-gray); }
 .cr-stats strong { color: var(--black); }
+/* Small singletrack ring per row (same ring as the distance pages, 56px; number sized to fit inside it). */
+.cr-ring { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; }
+.cr-ring .surface-ring .pct { font-size: 25px; }
+.cr-ring-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--lavender-gray); }
 .cr-profile { display: block; height: 64px; }
 .elev-mini { display: block; width: 100%; height: 100%; overflow: visible; }
 @media (max-width: 760px) {
-  .course-row { grid-template-columns: 1fr; padding: 0.85rem 1rem; gap: 0.4rem; }
-  .cr-start { display: inline; margin: 0 0 0 0.6rem; }
+  .course-row { grid-template-columns: 1fr auto; padding: 0.85rem 1rem; gap: 0.4rem 0.75rem; }
+  .cr-name { grid-column: 1; grid-row: 1; }
+  .cr-ring { grid-column: 2; grid-row: 1 / span 2; }
+  .cr-stats { grid-column: 1; grid-row: 2; }
+  .cr-profile { grid-column: 1 / -1; }
+  .cr-start { white-space: nowrap; }
+  .cr-ring-label { font-size: 0.65rem; }
   .cr-stats { flex-direction: row; flex-wrap: wrap; gap: 0 0.9rem; }
   .cr-profile { height: 48px; }
 }
