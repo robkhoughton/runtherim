@@ -433,6 +433,47 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .tf-map { margin: 1.25rem 0; }
 .TrailforksWidgetRoute { min-height: 500px; background: var(--white); border: 2px solid var(--sky); border-radius: var(--radius); overflow: hidden; }
 .tf-map figcaption { margin-top: 0.4rem; }
+/* Phones: the map loads only when tapped (js/trailforks.js), so the page stays short and
+   swipes scroll the page instead of panning a map (Joel, 2026-11-25). */
+.tf-deferred { display: none; }
+.tf-tap { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tf-tap .btn { padding: 0.6rem 1rem; font-size: 0.9rem; }
+.tf-loaded { background: var(--white); border: 2px solid var(--sky); border-radius: var(--radius); overflow: hidden; }
+.tf-loaded iframe { display: block; }
+
+/* Elevation profiles (courses.html), generated from the GPX files by
+   runtherim.com/_tools/elevation_profiles.py; do not edit the markup by hand.
+   The SVG stretches to the box; labels, aid markers and the readout are HTML in percent. */
+.elev { margin: 1.5rem 0 0.5rem; }
+.elev-plot, .elev-xaxis { margin-left: 3.2rem; margin-right: 0.4rem; }
+.elev-plot { position: relative; height: 170px; touch-action: pan-y; cursor: crosshair; }
+@media (min-width: 761px) { .elev-plot { height: 210px; } }
+.elev-plot:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
+.elev-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+.elev-grid line { stroke: #E3E3E3; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.elev-area { fill: var(--medium-green); fill-opacity: 0.12; }
+.elev-line { fill: none; stroke: var(--medium-green); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.elev-y, .elev-x { position: absolute; font-size: 0.75rem; line-height: 1; color: var(--lavender-gray); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.elev-y { right: calc(100% + 0.45rem); transform: translateY(-50%); }
+.elev-xaxis { position: relative; height: 1.4rem; border-top: 1px solid #BDBDBD; }
+.elev-x { top: 0.35rem; transform: translateX(-50%); }
+.elev-x:first-child { transform: none; }
+.elev-x.end { transform: translateX(-100%); }
+/* Aid stations: filled = Full, hollow = Limited (shape, not color alone), with a 2px white ring. */
+.elev-aid, .elev-key { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--medium-green); background: var(--white); box-sizing: border-box; }
+.elev-aid { position: absolute; margin: -5px 0 0 -5px; box-shadow: 0 0 0 2px var(--white); pointer-events: none; }
+.elev-aid.full, .elev-key.full { background: var(--medium-green); }
+.elev-key { display: inline-block; vertical-align: -1px; }
+/* Hover/tap readout (js/elevation.js). */
+.elev-cross { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px solid var(--lavender-gray); pointer-events: none; }
+.elev-dot { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--dark-green); box-shadow: 0 0 0 2px var(--white); pointer-events: none; }
+.elev-tip {
+  position: absolute; bottom: calc(100% + 0.35rem); z-index: 5; pointer-events: none;
+  background: var(--white); color: var(--black); border: 1px solid #D9D9D9; border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); padding: 0.3rem 0.55rem; font-size: 0.8rem; line-height: 1.35; white-space: nowrap;
+}
+.elev-tip strong { color: var(--dark-green); }
+.elev-plot [hidden] { display: none; }
 .nw { white-space: nowrap; }
 /* Aid table with its legend: legend below on phones, to the right on wider screens. */
 .aid-block { margin: 1rem 0; }
@@ -472,3 +513,5 @@ main > section.band:last-child { border-bottom: 0; }
 .levels thead th:first-child { width: 34%; }
 @media (max-width: 520px) { .levels thead th:first-child { width: 30%; } }
 .sponsor-tier:first-child { margin-top: 0; }
+/* Phones: every other mile label, so the end label ("31.4 mi") never crowds its neighbor. */
+@media (max-width: 520px) { .elev-x.alt { display: none; } }
