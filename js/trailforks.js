@@ -4,7 +4,8 @@
    maps don't slow the first view of the page.
    Phones (<= 760px): no map loads by itself (Joel, 2026-11-25). Each map gets a "Show map"
    button and a "View on Trailforks" link; a tap builds that one iframe directly, with the same
-   widget URL widget.js would build. widget.js is not used on phones, because re-running it for
+   widget URL widget.js would build, but map only (trails=0, details=0: the side panel left the
+   map too narrow on a phone; Rob, 2026-11-25). widget.js is not used on phones, because re-running it for
    a second map would duplicate the maps already shown. The button then reads "Hide map" and
    closes the map again. */
 (function () {
@@ -63,7 +64,7 @@
       var h = '450px';
       var src = 'https://www.trailforks.com/widgets/route/?id=' + encodeURIComponent(div.getAttribute('data-id')) +
         '&w=100%25&h=' + h + '&activitytype=' + div.getAttribute('data-activitytype') +
-        '&map=1&elevation=0&trails=1&details=1&s=0&units=imperial&basicmap=1&surface=null';
+        '&map=1&elevation=0&trails=0&details=0&s=0&units=imperial&basicmap=1&surface=null';
       var iframe = document.createElement('iframe');
       iframe.src = src;
       iframe.width = '100%';
