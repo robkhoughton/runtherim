@@ -5,7 +5,8 @@
    Phones (<= 760px): no map loads by itself (Joel, 2026-11-25). Each map gets a "Show map"
    button and a "View on Trailforks" link; a tap builds that one iframe directly, with the same
    widget URL widget.js would build. widget.js is not used on phones, because re-running it for
-   a second map would duplicate the maps already shown. */
+   a second map would duplicate the maps already shown. The button then reads "Hide map" and
+   closes the map again. */
 (function () {
   var widgets = document.querySelectorAll('.TrailforksWidgetRoute');
   if (!widgets.length) return;
@@ -35,7 +36,30 @@
       row.appendChild(a);
     }
     div.parentNode.insertBefore(row, div);
+    div.id = div.id || 'tf-map-' + (section ? section.id : Math.random().toString(36).slice(2));
+    btn.setAttribute('aria-controls', div.id);
+    btn.setAttribute('aria-expanded', 'false');
+    var iframe = null;
+    // The button toggles: "Show map" builds the iframe on first use, "Hide map" closes it again so
+    // swipes scroll the page. The iframe is kept while hidden, so reopening doesn't reload it.
     btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      if (open) {
+        div.classList.remove('tf-loaded');
+        div.classList.add('tf-deferred');
+        btn.textContent = 'Show map';
+        btn.setAttribute('aria-expanded', 'false');
+        // Closing a tall map from below would leave the reader further down the page: bring the buttons back into view.
+        if (row.getBoundingClientRect().top < 0) row.scrollIntoView({ block: 'center' });
+        return;
+      }
+      if (!iframe) iframe = build();
+      div.classList.remove('tf-deferred');
+      div.classList.add('tf-loaded');
+      btn.textContent = 'Hide map';
+      btn.setAttribute('aria-expanded', 'true');
+    });
+    function build() {
       var h = '450px';
       var src = 'https://www.trailforks.com/widgets/route/?id=' + encodeURIComponent(div.getAttribute('data-id')) +
         '&w=100%25&h=' + h + '&activitytype=' + div.getAttribute('data-activitytype') +
@@ -49,10 +73,8 @@
       iframe.setAttribute('allowfullscreen', '1');
       iframe.title = (section && section.querySelector('h2') ? section.querySelector('h2').textContent + ' ' : '') + 'route map from Trailforks';
       div.appendChild(iframe);
-      div.classList.remove('tf-deferred');
-      div.classList.add('tf-loaded');
-      row.parentNode.removeChild(row);
-    });
+      return iframe;
+    }
   }
 
   var loaded = false;
