@@ -180,16 +180,6 @@ section.band { background: var(--bg-green); }
 .distance-list { padding-left: 1.2rem; }
 .distance-list li { margin-bottom: 0.5rem; }
 
-.cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-top: 1.5rem; }
-.card {
-  background: var(--white); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: var(--black);
-  border-top: 5px solid var(--sky); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-.card:hover { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); color: var(--black); }
-.card .dist { font-size: 1.75rem; font-weight: 700; color: var(--dark-green); line-height: 1.1; }
-.card .dist-title { font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.85rem; color: var(--medium-green); margin-top: 0.15rem; }
-.card .meta { font-size: 0.92rem; color: var(--lavender-gray); margin-top: 0.4rem; }
-.card .meta strong { color: var(--black); }
 
 /* Courses comparison rows (courses.html): name and start, the numbers, and a small elevation profile
    on the shared scale, so the climbs compare at a glance. Profiles come from _tools/elevation_profiles.py. */
