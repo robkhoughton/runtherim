@@ -464,14 +464,16 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 
 /* Home "The race": the RTR logo (art on black) in a black panel above the race photo. */
 /* Home "The race": the logo panel is the whole right column (the race photo moved to Race Day,
-   Rob 2026-11-25). On wide screens it stretches to the height of the text beside it, logo centered;
-   the logo art has a black background, so the panel reads as one piece. */
+   Rob 2026-11-25). On wide screens it keeps its natural height and is centered vertically against
+   the body text beside it; it never stretches to fill the column (Rob). */
 .race-side { display: grid; gap: 1.25rem; }
 .logo-feature { background: var(--black); border-radius: var(--radius); padding: 1rem 1.25rem; }
-@media (min-width: 860px) {
-  .race-side { align-self: stretch; }
-  .logo-feature { height: 100%; display: flex; align-items: center; justify-content: center; }
-}
+/* The heading gets its own row across both columns, so the logo centers against the body text only. */
+.race-cols { row-gap: 0; }
+.race-cols > h2 { grid-column: 1 / -1; }
+.race-cols > div > :first-child { margin-top: 0; }
+@media (min-width: 860px) { .race-side { align-self: center; } }
+@media (max-width: 859px) { .race-side { margin-top: 1.5rem; } }
 .side-photo { display: block; width: 100%; height: auto; margin-top: 1.5rem; border: 2px solid var(--sky); border-radius: var(--radius); }
 .logo-feature img { width: 100%; border-radius: 0; }
 /* Powder Blue frame on both images in Home's "The race" (Rob, 2026-11-20). */
