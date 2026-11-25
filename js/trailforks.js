@@ -63,7 +63,7 @@
       var h = '450px';
       var src = 'https://www.trailforks.com/widgets/route/?id=' + encodeURIComponent(div.getAttribute('data-id')) +
         '&w=100%25&h=' + h + '&activitytype=' + div.getAttribute('data-activitytype') +
-        '&map=1&elevation=1&trails=1&details=1&s=0&units=imperial&basicmap=1&surface=null';
+        '&map=1&elevation=0&trails=1&details=1&s=0&units=imperial&basicmap=1&surface=null';
       var iframe = document.createElement('iframe');
       iframe.src = src;
       iframe.width = '100%';
