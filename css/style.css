@@ -177,8 +177,6 @@ section.band { background: var(--bg-green); }
    past the viewport instead of scrolling inside .table-scroll. */
 .two-col > *, .info-grid > *, .footer-grid > * { min-width: 0; }
 
-.distance-list { padding-left: 1.2rem; }
-.distance-list li { margin-bottom: 0.5rem; }
 
 
 /* Courses comparison rows (courses.html): name and start, the numbers, and a small elevation profile
@@ -205,6 +203,24 @@ section.band { background: var(--bg-green); }
   .cr-stats { flex-direction: row; flex-wrap: wrap; gap: 0 0.9rem; }
   .cr-profile { height: 48px; }
 }
+
+/* Home: the step-up ladder (Rob, 2026-11-25). One card per distance, 5K to 50K, with a one-line
+   pitch and no numbers (miles, climbing and profiles are the Courses page's job). Each card links to
+   its distance page. */
+.ladder { list-style: none; padding: 0; margin: 2rem 0 1.25rem; display: grid; gap: 1rem; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.ladder-card {
+  display: flex; flex-direction: column; height: 100%; padding: 1.1rem 1.1rem 1.25rem; border-radius: var(--radius);
+  background: var(--white); border-top: 5px solid var(--sky); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  text-decoration: none; color: var(--black);
+}
+.ladder-card:hover { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); color: var(--black); }
+.ladder-card:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+.ladder-card .dist { font-size: 1.6rem; font-weight: 700; color: var(--dark-green); line-height: 1.1; }
+.ladder-card .dist-title { font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.85rem; color: var(--medium-green); margin-top: 0.15rem; }
+.ladder-card .pitch { margin-top: 0.6rem; font-size: 0.95rem; line-height: 1.45; }
+.ladder-note { margin-bottom: 1rem; }
+@media (max-width: 1000px) { .ladder { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); } }
+@media (max-width: 520px) { .ladder { grid-template-columns: 1fr; } }
 
 .dates { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
 .dates li { background: var(--white); border-left: 5px solid var(--medium-green); padding: 0.75rem 1rem; border-radius: var(--radius); }
