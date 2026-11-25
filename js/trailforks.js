@@ -1,4 +1,4 @@
-/* Trailforks route widgets on courses.html (same embed the 2026 WordPress page used).
+/* Trailforks route widgets on the distance pages (50k.html … 5k.html; same embed the 2026 WordPress page used).
    Trailforks' widget.js turns each .TrailforksWidgetRoute div into an iframe (map, elevation,
    trails, details). It is loaded only when a widget first nears the viewport, so the five
    maps don't slow the first view of the page.
@@ -72,7 +72,8 @@
       iframe.setAttribute('frameborder', '0');
       iframe.setAttribute('scrolling', 'no');
       iframe.setAttribute('allowfullscreen', '1');
-      iframe.title = (section && section.querySelector('h2') ? section.querySelector('h2').textContent + ' ' : '') + 'route map from Trailforks';
+      var h1 = document.querySelector('h1');
+      iframe.title = (h1 ? h1.textContent + ' ' : '') + 'route map from Trailforks';
       div.appendChild(iframe);
       return iframe;
     }

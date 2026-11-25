@@ -212,10 +212,13 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 /* Course sections */
 .course { border-top: 1px solid #D9D9D9; }
 .course:first-of-type { border-top: 0; }
-.course-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1.25rem; }
-.course-head h2 { margin: 0; }
-.course-head h2 .title { color: var(--medium-green); }
-.course-head .start { font-weight: 700; color: var(--medium-green); font-size: 1.2rem; }
+/* Distance pages (50k.html … 5k.html, one per course since 2026-11-25): the page title carries the
+   distance name and start time; "Courses" above it links back to the comparison page. */
+.page-title h1 .title { color: var(--medium-green); }
+.page-title .crumb { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+.page-title .crumb a { color: var(--medium-green); text-decoration: none; }
+.page-title .crumb a::before { content: "← "; }
+.page-title .crumb a:hover { text-decoration: underline; }
 .stats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; padding: 0; list-style: none; }
 .stats li { background: var(--bg-green); border-radius: var(--radius); padding: 0.4rem 0.8rem; font-size: 0.95rem; }
 .stats strong { color: var(--dark-green); }
@@ -239,6 +242,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 }
 .course-nav .wrap { display: flex; align-items: center; gap: 0.75rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
 .course-nav-label { flex: 0 0 auto; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--lavender-gray); }
+.course-nav a.course-nav-label { flex: 0 0 auto; display: inline; padding: 0; border: 0; background: none; text-decoration: none;
+  font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--lavender-gray); }
+.course-nav a.course-nav-label:hover { background: none; color: var(--dark-green); text-decoration: underline; }
+@media (max-width: 900px) { .course-nav a.course-nav-label { display: none; } }
 .course-nav ul { list-style: none; margin: 0; padding: 2px; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: thin; }
 .course-nav a {
   display: block; padding: 0.3rem 0.8rem; border-radius: var(--radius); white-space: nowrap; text-decoration: none;
@@ -258,6 +265,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   .course-nav-label { display: none; }
   .course-nav .wrap { padding-left: 0.75rem; padding-right: 0.75rem; }
 }
+.course-nav + section.course { padding-top: 1.75rem; }
+
 /* Phones: stats stay visible in smaller type, and the right edge fades while more chips lie off-screen
    (js/courses-nav.js removes .more at the end of the row). */
 .course-nav ul.more {
